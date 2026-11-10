@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abdelrahman Sror Resume</title>
+<meta name="description" content="Abdelrahman Sror: AI Automation Engineer (n8n, LLM agents, RAG).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@600;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: a one-page resume on a sheet. Sidebar for scannable facts, main column for the story. Calm and recruiter-friendly. */
+:root {
+  --page: #eef1f3;
+  --sheet: #ffffff;
+  --ink: #17212b;
+  --muted: #5d6874;
+  --line: #dde2e6;
+  --accent: #0f6e6a;
+  --accent-soft: #e2f1ef;
+  --display: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page: #0f1417; --sheet: #172024; --ink: #e6ecee; --muted: #9aa7ad; --line: #2a363b; --accent: #4fc2b8; --accent-soft: #19302e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --page: #0f1417; --sheet: #172024; --ink: #e6ecee; --muted: #9aa7ad; --line: #2a363b; --accent: #4fc2b8; --accent-soft: #19302e;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--page); color: var(--ink); font-family: var(--body); font-size: 16.5px; line-height: 1.6; padding: 40px 16px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; }
+p { margin: 0; }
+
+.sheet { max-width: 980px; margin: 0 auto; background: var(--sheet); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: 0 20px 50px -30px #0003; }
+.head { padding: 44px 48px 36px; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; }
+.head h1 { font-size: clamp(36px, 5.5vw, 54px); font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+.head .alt { font-family: var(--mono); font-size: 13px; color: var(--muted); margin-top: 10px; }
+.head .role { font-size: 21px; color: var(--accent); font-weight: 600; margin-top: 14px; }
+.open { font-size: 14px; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 8px 14px; border-radius: 999px; white-space: nowrap; }
+
+.body { display: grid; grid-template-columns: 290px 1fr; }
+aside { padding: 36px 32px 44px 48px; border-right: 1px solid var(--line); display: grid; gap: 32px; align-content: start; }
+main { padding: 36px 48px 44px 40px; display: grid; gap: 36px; align-content: start; }
+
+h2 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); padding-bottom: 10px; border-bottom: 2px solid var(--ink); margin-bottom: 16px; }
+.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+.list.contact li { display: grid; }
+.list.contact small { font-size: 12.5px; color: var(--muted); }
+.list.contact a { overflow-wrap: anywhere; }
+.chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.chips span { font-size: 14px; border: 1px solid var(--line); border-radius: 7px; padding: 3px 10px; }
+.chips span.k { background: var(--accent-soft); border-color: transparent; color: var(--accent); font-weight: 600; }
+
+.summary { font-size: 18px; max-width: 62ch; }
+.job { display: grid; gap: 8px; }
+.job + .job { margin-top: 22px; }
+.job-top { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: baseline; }
+.job h3 { font-size: 20px; letter-spacing: -0.01em; }
+.job .where { color: var(--muted); }
+.job .when { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.job ul { margin: 4px 0 0; padding-inline-start: 20px; display: grid; gap: 5px; }
+.job li::marker { color: var(--accent); }
+
+.todo { border: 1.5px dashed var(--line); border-radius: 12px; padding: 16px 18px; color: var(--muted); font-size: 15px; }
+.todo b { color: var(--ink); }
+
+.stat { font-family: var(--mono); font-size: 12.5px; color: var(--accent); background: var(--accent-soft); padding: 3px 10px; border-radius: 999px; white-space: nowrap; }
+.tools { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.tools span { font-family: var(--mono); font-size: 12px; color: var(--muted); border: 1px solid var(--line); border-radius: 6px; padding: 2px 8px; }
+.ml { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.ml div { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; }
+.ml span { font-family: var(--mono); font-size: 12.5px; color: var(--accent); }
+.certs li { display: grid; }
+.certs small { color: var(--muted); font-size: 14px; }
+aside { gap: 26px; }
+@media (max-width: 760px) { .ml { grid-template-columns: 1fr; } }
+@media (max-width: 760px) {
+  body { padding: 16px 10px; }
+  .head { grid-template-columns: 1fr; padding: 32px 24px 26px; }
+  .open { justify-self: start; }
+  .body { grid-template-columns: 1fr; }
+  aside { border-right: 0; border-bottom: 1px solid var(--line); padding: 28px 24px; }
+  main { padding: 28px 24px 36px; }
+}
+@media print {
+  body { background: #fff; padding: 0; }
+  .sheet { border: 0; box-shadow: none; }
+  .todo { display: none; }
+}
+</style>
+</head>
+<body>
+<article class="sheet">
+  <header class="head">
+    <div>
+      <h1>Abdelrahman Sror</h1>
+      <div class="role">AI Automation Engineer · n8n, LLM Agents, RAG</div>
+      <div class="alt">Cairo, Egypt · Open to relocation</div>
+    </div>
+    <span class="open">Open to full-time roles</span>
+  </header>
+
+  <div class="body">
+    <aside>
+      <div>
+        <h2>Contact</h2>
+        <ul class="list contact">
+          <li><small>Email</small><a href="mailto:Abdelrahmansror24@gmail.com">Abdelrahmansror24@gmail.com</a></li>
+          <li><small>Phone</small><a href="tel:+201147575374">+20 114 757 5374</a></li>
+          <li><small>LinkedIn</small><a href="https://www.linkedin.com/in/abdelrahman-sror/">in/abdelrahman-sror</a></li>
+          <li><small>GitHub</small><a href="https://github.com/MARSHALLSROR">MARSHALLSROR</a></li>
+          <li><small>Upwork</small><a href="https://www.upwork.com/freelancers/~01a9b454e764cab5d7">Upwork profile</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Automation</h2>
+        <div class="chips"><span class="k">n8n</span><span>Workflow automation</span><span>Business process automation</span><span>Email automation</span><span>Error handling</span><span>Human-in-the-loop approvals</span><span>Multi-agent workflows</span></div>
+      </div>
+      <div>
+        <h2>AI</h2>
+        <div class="chips"><span class="k">LLMs</span><span>OpenAI</span><span>Claude</span><span>Gemini</span><span>Ollama</span><span>Prompt engineering</span><span class="k">AI agents</span><span>Tool calling</span><span class="k">RAG</span><span>Embeddings</span><span>Vector DBs (Supabase)</span><span>MCP</span></div>
+      </div>
+      <div>
+        <h2>Integrations</h2>
+        <div class="chips"><span>REST APIs</span><span>Webhooks</span><span>JSON</span><span>JavaScript</span><span>Gmail</span><span>Slack</span><span>Google Sheets</span><span>Google Drive</span><span>Airtable</span><span>Notion</span><span>Telegram</span><span>HMAC security</span><span>Rate limiting</span></div>
+      </div>
+      <div>
+        <h2>Deployment</h2>
+        <div class="chips"><span>Docker</span><span>Monitoring</span><span>Testing</span><span>Git</span><span>Google Cloud</span></div>
+      </div>
+      <div>
+        <h2>Programming &amp; data</h2>
+        <div class="chips"><span>Python</span><span>SQL</span><span>PyTorch</span><span>Scikit-learn</span><span>PostgreSQL</span><span>MySQL</span><span>Snowflake</span><span>dbt</span></div>
+      </div>
+    </aside>
+
+    <main>
+      <div>
+        <h2>Profile</h2>
+        <p class="summary">AI Automation Engineer specializing in RAG systems and email automation. I build n8n workflows that connect AI models to everyday business tools such as Gmail, Slack, Google Sheets and Telegram, with hands-on experience in AI agents, document search and secure, deployed systems. I also work with Python and PyTorch, and have a solid data background in SQL and cloud platforms.</p>
+      </div>
+
+      <div>
+        <h2>Experience</h2>
+        <div class="job">
+          <div class="job-top"><h3>AI Engineering Intern</h3><span class="when">Dec 2025 – May 2026</span></div>
+          <div class="where">AITRONIX</div>
+          <ul><li>Built and fine-tuned AI models for image and text tasks using Python and PyTorch (CNN, YOLO, BERT, BART).</li></ul>
+        </div>
+      </div>
+
+      <div>
+        <h2>AI automation projects (n8n)</h2>
+        <div class="job">
+          <div class="job-top"><h3>Lead Intake &amp; Qualification Engine</h3><span class="stat">80+ nodes</span></div>
+          <ul>
+            <li>Takes leads from a web form (Hiring, Partnership, Sales/Demo, Meeting/Follow-up) and routes each one to the right process.</li>
+            <li>An AI agent summarizes every lead and recommends next steps with a confidence score; results are stored in a Supabase vector database.</li>
+            <li>A Telegram approval step comes first, then the system sends a confirmation email (Gmail), notifies the team on Slack, logs the lead in Google Sheets and saves attachments to Google Drive.</li>
+            <li>Includes a RAG knowledge base: staff upload documents and ask questions in chat, answered with Gemini embeddings and Supabase.</li>
+          </ul>
+          <div class="tools"><span>n8n</span><span>AI agent</span><span>Supabase</span><span>Gemini</span><span>Telegram</span><span>Gmail</span><span>Slack</span><span>Sheets</span><span>Drive</span></div>
+        </div>
+        <div class="job">
+          <div class="job-top"><h3>AI Customer Support System</h3><span class="stat">4 AI agents</span></div>
+          <ul>
+            <li>Reads Gmail messages, sorts them by type and drafts replies from a company knowledge base (RAG).</li>
+            <li>Sends drafts to Telegram for human approval and logs cases in Airtable.</li>
+          </ul>
+          <div class="tools"><span>n8n</span><span>RAG</span><span>Gmail</span><span>Telegram</span><span>Airtable</span></div>
+        </div>
+        <div class="job">
+          <div class="job-top"><h3>AI Email Tools, Document Search &amp; Research Agent</h3></div>
+          <ul>
+            <li>Email router (Gmail, Telegram alerts, Google Sheets) and an email analyzer running OpenAI and Claude side by side, saving results to Notion.</li>
+            <li>Document and image search (RAG) with Gemini Vision, a research agent with web search and memory, MCP workflows, and a webhook bot secured with HMAC verification and rate limiting.</li>
+          </ul>
+          <div class="tools"><span>OpenAI</span><span>Claude</span><span>Gemini Vision</span><span>Notion</span><span>MCP</span><span>HMAC</span></div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Machine learning projects</h2>
+        <div class="ml">
+          <div><b>Medical image classification</b><span>CNN</span></div>
+          <div><b>Real-time fire detection</b><span>YOLO</span></div>
+          <div><b>Sentiment analysis</b><span>BERT</span></div>
+          <div><b>Text summarization</b><span>BART</span></div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Certifications</h2>
+        <ul class="list certs">
+          <li>AI Automation Engineer with n8n Specialization <small>LearnKartS (Coursera) · 2026</small></li>
+          <li>Introducing Generative AI with AWS; Machine Learning Foundations <small>AWS Educate</small></li>
+          <li>Data engineering training: Snowflake (Advanced), dbt Fundamentals, Certified Google Cloud Professional Data Engineer</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Education</h2>
+        <div class="job">
+          <div class="job-top"><h3>Bachelor's Degree in Accounting</h3><span class="when">2018 – 2021</span></div>
+          <div class="where">Suez Canal University</div>
+        </div>
+      </div>
+    </main>
+  </div>
+</article>
+</body>
+</html>
